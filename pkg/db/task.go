@@ -1,6 +1,8 @@
 package db
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Task struct {
 	ID      string `json:"id"`
@@ -38,9 +40,13 @@ func Tasks(limit int) ([]*Task, error) {
 		}
 		task = append(task, &t)
 	}
+	if err = rows.Err(); err != nil {
+		return nil, err
+	}
 	if task == nil {
 		return []*Task{}, nil
 	}
+
 	return task, nil
 }
 

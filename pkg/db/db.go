@@ -43,3 +43,7 @@ func Init(dbFile string) error {
 	}
 	return err
 }
+
+func Close() {
+	db.Close()
+}

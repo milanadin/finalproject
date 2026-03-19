@@ -79,6 +79,9 @@ func nextDayHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "cannot calculate next date", http.StatusBadRequest)
 		return
 	} else {
-		w.Write([]byte(date))
+		_, err := w.Write([]byte(date))
+		if err != nil {
+			return
+		}
 	}
 }

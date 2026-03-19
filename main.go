@@ -12,6 +12,7 @@ func main() {
 		fmt.Println("database initialization error", err)
 		return
 	}
+	defer db.Close()
 
 	api.Init()
 
